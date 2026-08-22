@@ -19,7 +19,9 @@ class Conversion:
         """
         pass
     
-    def fahrenheit_a_celsius(self, fahrenheit):
+    def fahrenheit_a_celsius(self, fahrenheit:float):
+        celsius = (fahrenheit - 32) * 5/9
+        return celsius
         """
         Convierte temperatura de Fahrenheit a Celsius.
         
@@ -37,7 +39,9 @@ class Conversion:
         """
         pass
     
-    def metros_a_pies(self, metros):
+    def metros_a_pies(self, metros: float):
+        pies = metros * 3.28084
+        return pies
         """
         Convierte distancia de metros a pies.
         
@@ -54,7 +58,9 @@ class Conversion:
         """
         pass
     
-    def pies_a_metros(self, pies):
+    def pies_a_metros(self, pies: float):
+        metros = pies * 0.3048
+        return metros
         """
         Convierte distancia de pies a metros.
         
