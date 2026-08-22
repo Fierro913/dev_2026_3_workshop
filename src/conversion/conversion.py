@@ -185,7 +185,7 @@ class Conversion:
         }
                 return ' '.join(morse_code[char] for char in texto.upper() if char in morse_code)
 
-        """
+    """
         Convierte texto a código Morse.
         
         Args:
@@ -197,8 +197,8 @@ class Conversion:
         Ejemplo:
             texto_a_morse("SOS") -> "... --- ..."
             texto_a_morse("HELLO") -> ".... . .-.. .-.. ---"
-        """
-        pass
+    """
+    pass
     
     def morse_a_texto(self, morse):
         morse_code = {
