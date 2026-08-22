@@ -78,6 +78,8 @@ class Conversion:
         pass
     
     def decimal_a_binario(self, decimal):
+        if decimal == "0": return "0"
+        return bin(decimal).replace("0b", "")
         """
         Convierte un número decimal a su representación binaria.
         
