@@ -5,6 +5,10 @@ class Data:
     """
     
     def invertir_lista(self, lista):
+        lista_invertida = []
+        for i in range(len(lista)-1, -1, -1):
+            lista_invertida.append(lista[i])
+        return lista_invertida
         """
         Invierte el orden de los elementos en una lista sin usar reversed() o lista[::-1].
         
