@@ -213,7 +213,7 @@ class Conversion:
             '...--': '3', '....-': '4','.....': '5',
             '-....': '6','--...': '7','---..':'8','----.':'9'
         }
-        return ' '.join(morse_code[char] for char in morse.split())
+        return ''.join(morse_code[char] for char in morse.split(...))
         """
         Convierte código Morse a texto.
         
