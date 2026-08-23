@@ -74,6 +74,16 @@ class Data:
             else:
                 lista_combinada.append(lista2[j])
                 j += 1
+
+        while i < len(lista1):
+            lista_combinada.append(lista1[i])
+            i += 1
+
+        while j < len(lista2):
+            lista_combinada.append(lista2[j])
+            j += 1
+
+        return lista_combinada
         """
         Combina dos listas ordenadas en una sola lista ordenada.
         
@@ -87,6 +97,12 @@ class Data:
         pass
     
     def rotar_lista(self, lista, k):
+        lista_rotada = []
+        for i in range(k, len(lista)):
+            lista_rotada.append(lista[i])
+        for i in range(k):
+            lista_rotada.append(lista[i])
+        return lista_rotada
         """
         Rota los elementos de una lista k posiciones a la derecha.
         
