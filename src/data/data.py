@@ -42,16 +42,13 @@ class Data:
         pass
     
     def eliminar_duplicados(self, lista):
-        visto = set()
-
         lista_sin_duplicados = []
-
+        
         for item in lista:
-            if item not in visto:
-                visto.add(item)
+            if not any(x == item and type(x) is type(item) for x in lista_sin_duplicados):
                 lista_sin_duplicados.append(item)
-
-        return lista_sin_duplicados
+                
+        return lista_sin_duplicados  
         """
         Elimina elementos duplicados de una lista sin usar set().
         Mantiene el orden original de aparición.
@@ -65,25 +62,22 @@ class Data:
         pass
     
     def merge_ordenado(self, lista1, lista2):
-        lista_combinada = []
-
+        resultado = []
+        i = 0  # Puntero para lista1
+        j = 0  # Puntero para lista2
+        
         while i < len(lista1) and j < len(lista2):
-            if lista1[i] < lista2[j]:
-                lista_combinada.append(lista1[i])
+            if lista1[i] <= lista2[j]:
+                resultado.append(lista1[i])
                 i += 1
             else:
-                lista_combinada.append(lista2[j])
+                resultado.append(lista2[j])
                 j += 1
-
-        while i < len(lista1):
-            lista_combinada.append(lista1[i])
-            i += 1
-
-        while j < len(lista2):
-            lista_combinada.append(lista2[j])
-            j += 1
-
-        return lista_combinada
+                
+        resultado.extend(lista1[i:])
+        resultado.extend(lista2[j:])
+        
+        return resultado
         """
         Combina dos listas ordenadas en una sola lista ordenada.
         
