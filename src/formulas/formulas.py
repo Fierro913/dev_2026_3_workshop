@@ -4,6 +4,8 @@ class Formulas:
     """
 
     def velocidad_media(self, distancia, tiempo):
+        velocidad_media = distancia / tiempo
+        return velocidad_media
         """
         Calcula la velocidad media de un recorrido.
 
@@ -22,6 +24,10 @@ class Formulas:
         return distancia / tiempo
 
     def mruv_posicion(self, posicion_inicial, velocidad_inicial, aceleracion, tiempo):
+        posicion_final = (
+            posicion_inicial + velocidad_inicial * tiempo + (1 / 2) * aceleracion * tiempo**2
+        )
+        return posicion_final
         """
         Calcula la posición de un móvil con aceleración constante (MRUV).
 
@@ -42,6 +48,8 @@ class Formulas:
         pass
 
     def mruv_velocidad(self, velocidad_inicial, aceleracion, tiempo):
+        velocidad_final = velocidad_inicial + aceleracion * tiempo
+        return velocidad_final
         """
         Calcula la velocidad final de un móvil con aceleración constante (MRUV).
 
@@ -61,6 +69,8 @@ class Formulas:
         pass
 
     def fuerza_newton(self, masa, aceleracion):
+        fuerza = masa * aceleracion
+        return fuerza
         """
         Calcula la fuerza según la segunda ley de Newton.
 
@@ -79,6 +89,8 @@ class Formulas:
         pass
 
     def energia_cinetica(self, masa, velocidad):
+        energia_cinetica = (1 / 2) * masa * velocidad**2
+        return energia_cinetica
         """
         Calcula la energía cinética de un objeto en movimiento.
 
@@ -97,6 +109,8 @@ class Formulas:
         pass
 
     def energia_potencial(self, masa, altura, gravedad=9.8):
+        energia_potencial = masa * gravedad * altura
+        return energia_potencial
         """
         Calcula la energía potencial gravitatoria de un objeto.
 
@@ -116,6 +130,8 @@ class Formulas:
         pass
 
     def ley_ohm_voltaje(self, corriente, resistencia):
+        voltaje = corriente * resistencia
+        return voltaje
         """
         Calcula el voltaje usando la ley de Ohm.
 
@@ -134,6 +150,8 @@ class Formulas:
         pass
 
     def ley_ohm_corriente(self, voltaje, resistencia):
+        corriente = voltaje / resistencia
+        return corriente
         """
         Calcula la corriente usando la ley de Ohm.
 
@@ -152,6 +170,8 @@ class Formulas:
         pass
 
     def interes_simple(self, capital, tasa, tiempo):
+        interes = capital * tasa * tiempo
+        return interes
         """
         Calcula el interés generado por un capital a interés simple.
 
@@ -171,6 +191,8 @@ class Formulas:
         pass
 
     def interes_compuesto(self, capital, tasa, tiempo, n=1):
+        interes = capital * (1 + tasa / n) ** (n * tiempo)
+        return interes
         """
         Calcula el monto final de un capital a interés compuesto.
 
@@ -191,6 +213,8 @@ class Formulas:
         pass
 
     def discriminante(self, a, b, c):
+        discriminante = b ** 2 - 4 * a * c
+        return discriminante
         """
         Calcula el discriminante de una ecuación cuadrática ax^2 + bx + c = 0.
 
@@ -210,6 +234,12 @@ class Formulas:
         pass
 
     def raices_cuadraticas(self, a, b, c):
+        discriminante= (b ** 2 - 4 * a * c)
+        if discriminante < 0:
+            raise ValueError("El discriminante es negativo, la ecuacion no tiene raices reales")
+        raiz1 = (-b + discriminante ** 0.5) / (2 * a)
+        raiz2 = (-b - discriminante ** 0.5) / (2 * a)
+        return raiz1, raiz2
         """
         Calcula las raíces reales de una ecuación cuadrática ax^2 + bx + c = 0
         usando la fórmula general. Si el discriminante es negativo, lanza ValueError.
@@ -230,6 +260,8 @@ class Formulas:
         pass
 
     def imc(self, peso, altura):
+        imc = peso / altura ** 2
+        return imc
         """
         Calcula el Índice de Masa Corporal (IMC).
 
@@ -248,6 +280,7 @@ class Formulas:
         pass
 
     def hipotenusa_pitagoras(self, cateto1, cateto2):
+        return (cateto1 ** 2 + cateto2 ** 2) ** 0.5
         """
         Calcula la longitud de la hipotenusa de un triángulo rectángulo.
 
