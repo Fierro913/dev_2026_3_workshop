@@ -91,12 +91,14 @@ class Data:
         pass
     
     def rotar_lista(self, lista, k):
-        lista_rotada = []
-        for i in range(k, len(lista)):
-            lista_rotada.append(lista[i])
-        for i in range(k):
-            lista_rotada.append(lista[i])
-        return lista_rotada
+        if not lista:
+            return []
+        k = k % len(lista)
+
+        if k == 0:
+            return lista[:]
+
+        return lista[-k:] + lista[:-k]
         """
         Rota los elementos de una lista k posiciones a la derecha.
         
@@ -110,6 +112,10 @@ class Data:
         pass
     
     def encuentra_numero_faltante(self, lista):
+        n = len(lista) + 1
+        suma_esperada = n * (n + 1) // 2
+        suma_actual = sum(lista)
+        return suma_esperada - suma_actual
         """
         Encuentra el número faltante en una lista de enteros del 1 al n.
         
@@ -122,6 +128,10 @@ class Data:
         pass
     
     def es_subconjunto(self, conjunto1, conjunto2):
+        for elemento in conjunto1:
+            if elemento not in conjunto2:
+                return False
+        return True
         """
         Verifica si conjunto1 es subconjunto de conjunto2 sin usar set.
         
@@ -135,6 +145,28 @@ class Data:
         pass
     
     def implementar_pila(self):
+        elementos = []
+
+        def is_empty():
+            return len(elementos) == 0
+
+        def push(elemento):
+            elementos.append(elemento)
+
+        def pop():
+            if is_empty():
+                return None
+            return elementos.pop()
+
+        def peek():
+            if is_empty():
+                return None
+            return elementos[-1]
+
+        return {"is_empty": is_empty, 
+                "push": push, 
+                "pop": pop, 
+                "peek": peek}
         """
         Implementa una estructura de datos tipo pila (stack) usando listas.
         
@@ -144,6 +176,28 @@ class Data:
         pass
     
     def implementar_cola(self):
+        elementos = []
+
+        def is_empty():
+            return len(elementos) == 0
+
+        def enqueue(elemento):
+            elementos.append(elemento)
+
+        def dequeue():
+            if is_empty():
+                return None
+            return elementos.pop(0)
+
+        def peek():
+            if is_empty():
+                return None
+            return elementos[0]
+
+        return {"is_empty": is_empty, 
+                "enqueue": enqueue, 
+                "dequeue": dequeue, 
+                "peek": peek}
         """
         Implementa una estructura de datos tipo cola (queue) usando listas.
         
@@ -153,6 +207,14 @@ class Data:
         pass
     
     def matriz_transpuesta(self, matriz):
+        if not matriz or not matriz[0]:
+            return []
+
+        filas = len(matriz)
+
+        columnas = len(matriz[0])
+
+        return [[matriz[j][i] for j in range(filas)] for i in range(columnas)]
         """
         Calcula la transpuesta de una matriz.
         
