@@ -38,6 +38,11 @@ class Games:
         pass
     
     def adivinar_numero_pista(self, numero_secreto, intento):
+        if intento < numero_secreto:
+            return "muy bajo"
+        elif intento > numero_secreto:
+            return "muy alto"
+        return "correcto"
         """
         Proporciona pistas para un juego de adivinanza de números.
         
@@ -51,6 +56,7 @@ class Games:
         pass
     
     def ta_te_ti_ganador(self, tablero):
+
         """
         Verifica si hay un ganador en un tablero de tic-tac-toe.
         
