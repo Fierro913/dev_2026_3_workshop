@@ -96,7 +96,9 @@ class Games:
         pass
     
     def generar_combinacion_mastermind(self, longitud, colores_disponibles):
-        
+        import random
+        return [random.choice(colores_disponibles) for _ in range(longitud)]
+
         """
         Genera una combinación aleatoria para el juego Mastermind.
         
@@ -114,6 +116,32 @@ class Games:
         pass
     
     def validar_movimiento_torre_ajedrez(self, desde_fila, desde_col, hasta_fila, hasta_col, tablero):
+        if not (0 <= desde_fila <= 7 and 0 <= desde_col <= 7 and 0 <= hasta_fila <= 7 and 0 <= hasta_col <= 7):
+            return False  
+        if desde_fila == hasta_fila and desde_col == hasta_col:            
+            return False
+
+        if desde_fila != hasta_fila and desde_col != hasta_col:
+            return False
+        if desde_fila == hasta_fila and desde_col == hasta_col: 
+            return False
+
+        def esta_vacia(casilla):
+            return casilla in [" ", "", 0, None]
+
+        if desde_col == hasta_col:
+            paso = 1 if hasta_fila > desde_fila else -1
+            for fila in range(desde_fila + paso, hasta_fila, paso):
+                if not esta_vacia(tablero[fila][desde_col]):
+                    return False
+        elif desde_fila == hasta_fila:
+            paso = 1 if hasta_col > desde_col else -1
+            for col in range(desde_col + paso, hasta_col, paso):
+                if not esta_vacia(tablero[desde_fila][col]):
+                    return False
+        
+        return True
+
         """
         Valida si un movimiento de torre en ajedrez es legal.
         
