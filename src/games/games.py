@@ -1,5 +1,25 @@
 class Games:
     def piedra_papel_tijera(self, jugador1, jugador2):
+        jugador1 = jugador1.lower()
+        jugador2 = jugador2.lower()
+
+        opciones_validas = ["piedra", "papel", "tijera"]
+        if jugador1 not in opciones_validas or jugador2 not in opciones_validas:
+            return "invalid"
+
+        if jugador1 == jugador2:
+            return "empate"
+
+        reglas_ganador = {
+            "piedra": "tijera",
+            "tijera": "papel",
+            "papel": "piedra"
+        }
+
+        if reglas_ganador[jugador1] == jugador2:
+            return "jugador1"
+        return "jugador2"
+        
         """
         Determina el ganador del juego piedra, papel o tijera.
         
