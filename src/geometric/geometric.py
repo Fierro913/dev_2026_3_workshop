@@ -42,6 +42,11 @@ class Geometria:
         pass
     
     def area_circulo(self, radio):
+        if radio < 0:
+
+            return 0
+        
+        return 3.14159 * radio ** 2
         """
         Calcula el área de un círculo.
         
@@ -54,6 +59,11 @@ class Geometria:
         pass
     
     def perimetro_circulo(self, radio):
+        if radio < 0:
+
+            return 0
+        
+        return 2 * 3.14159 * radio
         """
         Calcula el perímetro (circunferencia) de un círculo.
         
