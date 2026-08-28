@@ -5,6 +5,12 @@ class Geometria:
     """
     
     def area_rectangulo(self, base, altura):
+        if base < 0 or altura < 0:
+
+            return 0
+        
+        return base * altura
+        
         """
         Calcula el área de un rectángulo.
         
@@ -15,9 +21,14 @@ class Geometria:
         Returns:
             float: Área del rectángulo
         """
-        return base*altura
+        pass
     
     def perimetro_rectangulo(self, base, altura):
+        if base < 0 or altura < 0:
+
+            return 0
+        
+        return 2 * (base + altura)
         """
         Calcula el perímetro de un rectángulo.
         
