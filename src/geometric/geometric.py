@@ -76,6 +76,11 @@ class Geometria:
         pass
     
     def area_triangulo(self, base, altura):
+        if base < 0 or altura < 0:
+
+            return 0
+        
+        return (base * altura) / 2 
         """
         Calcula el área de un triángulo.
         
@@ -89,6 +94,11 @@ class Geometria:
         pass
     
     def perimetro_triangulo(self, lado1, lado2, lado3):
+        if lado1 < 0 or lado2 < 0 or lado3 < 0:
+
+            return 0
+        
+        return lado1 + lado2 + lado3
         """
         Calcula el perímetro de un triángulo.
         
@@ -103,6 +113,13 @@ class Geometria:
         pass
     
     def es_triangulo_valido(self, lado1, lado2, lado3):
+        if lado1 < 0 or lado2 < 0 or lado3 < 0:
+
+            return False
+            
+        if (lado1 + lado2 > lado3) and (lado1 + lado3 > lado2) and (lado2 + lado3 > lado1):
+            
+            return True
         """
         Verifica si tres longitudes pueden formar un triángulo válido.
         Un triángulo es válido si la suma de las longitudes de dos lados
