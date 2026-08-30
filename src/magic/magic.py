@@ -5,6 +5,7 @@ class Magic:
     """
     
     def fibonacci(self, n):
+        
         """
         Calcula el n-ésimo número de la secuencia de Fibonacci.
         

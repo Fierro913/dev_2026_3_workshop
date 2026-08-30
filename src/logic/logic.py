@@ -4,6 +4,9 @@ class Logica:
     """
     
     def AND(self, a, b):
+        if a and b:
+            return True
+        return False
         """
         Implementa la operación lógica AND.
         
@@ -17,6 +20,9 @@ class Logica:
         pass
     
     def OR(self, a, b):
+        if a or b:
+            return True
+        return False
         """
         Implementa la operación lógica OR.
         
@@ -30,6 +36,9 @@ class Logica:
         pass
     
     def NOT(self, a):
+        if not a:
+            return True
+        return False
         """
         Implementa la operación lógica NOT.
         
@@ -42,6 +51,9 @@ class Logica:
         pass
     
     def XOR(self, a, b):
+        if a != b:
+            return True
+        return False
         """
         Implementa la operación lógica XOR (OR exclusivo).
         
@@ -55,6 +67,9 @@ class Logica:
         pass
     
     def NAND(self, a, b):
+        if not (a and b):
+            return True
+        return False
         """
         Implementa la operación lógica NAND (NOT AND).
         
@@ -68,6 +83,9 @@ class Logica:
         pass
     
     def NOR(self, a, b):
+        if not (a or b):
+            return True
+        return False
         """
         Implementa la operación lógica NOR (NOT OR).
         
@@ -81,6 +99,9 @@ class Logica:
         pass
     
     def XNOR(self, a, b):
+        if a == b:
+            return True
+        return False
         """
         Implementa la operación lógica XNOR (NOT XOR).
         
@@ -94,6 +115,10 @@ class Logica:
         pass
     
     def implicacion(self, a, b):
+        if not a or b:
+            return True
+        return False
+
         """
         Implementa la operación lógica de implicación (a -> b).
         
@@ -107,6 +132,9 @@ class Logica:
         pass
     
     def bi_implicacion(self, a, b):
+        if a == b:
+            return True
+        return False
         """
         Implementa la operación lógica de bi-implicación (a <-> b).
         
