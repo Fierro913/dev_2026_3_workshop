@@ -132,6 +132,11 @@ class Geometria:
         pass
     
     def area_trapecio(self, base_mayor, base_menor, altura):
+        if base_mayor < 0 or base_menor < 0 or altura < 0:
+
+            return 0
+        
+        return ((base_mayor + base_menor) * altura) / 2
         """
         Calcula el área de un trapecio.
         
@@ -146,6 +151,11 @@ class Geometria:
         pass
     
     def area_rombo(self, diagonal_mayor, diagonal_menor):
+        if diagonal_mayor < 0 or diagonal_menor < 0:
+
+            return 0
+        
+        return (diagonal_mayor * diagonal_menor) / 2
         """
         Calcula el área de un rombo usando sus diagonales.
         
@@ -159,6 +169,11 @@ class Geometria:
         pass
     
     def area_pentagono_regular(self, lado, apotema):
+        if lado < 0 or apotema < 0:
+
+            return 0
+        
+        return (5 * lado * apotema) / 2
         """
         Calcula el área de un pentágono regular.
         
@@ -172,6 +187,11 @@ class Geometria:
         pass
     
     def perimetro_pentagono_regular(self, lado):
+        if lado < 0:
+
+            return 0
+        
+        return 5 * lado
         """
         Calcula el perímetro de un pentágono regular.
         
@@ -184,6 +204,11 @@ class Geometria:
         pass
     
     def area_hexagono_regular(self, lado, apotema):
+        if lado < 0 or apotema < 0:
+
+            return 0
+        
+        return (3 * lado * apotema)
         """
         Calcula el área de un hexágono regular.
         
@@ -197,6 +222,11 @@ class Geometria:
         pass
     
     def perimetro_hexagono_regular(self, lado):
+        if lado < 0:
+
+            return 0
+        
+        return 6 * lado
         """
         Calcula el perímetro de un hexágono regular.
         
@@ -209,6 +239,11 @@ class Geometria:
         pass
     
     def volumen_cubo(self, lado):
+        if lado < 0:
+
+            return 0
+        
+        return lado ** 3
         """
         Calcula el volumen de un cubo.
         
@@ -221,6 +256,11 @@ class Geometria:
         pass
     
     def area_superficie_cubo(self, lado):
+        if lado < 0:
+
+            return 0
+        
+        return 6 * (lado ** 2)
         """
         Calcula el área de la superficie de un cubo.
         
@@ -233,6 +273,11 @@ class Geometria:
         pass
     
     def volumen_esfera(self, radio):
+        if radio < 0:
+
+            return 0
+        
+        return (4 / 3) * 3.14159 * radio ** 3
         """
         Calcula el volumen de una esfera.
         
@@ -245,6 +290,11 @@ class Geometria:
         pass
     
     def area_superficie_esfera(self, radio):
+        if radio < 0:
+
+            return 0
+        
+        return 4 * 3.14159 * radio ** 2
         """
         Calcula el área de la superficie de una esfera.
         
@@ -257,6 +307,11 @@ class Geometria:
         pass
     
     def volumen_cilindro(self, radio, altura):
+        if radio < 0 or altura < 0:
+
+            return 0
+        
+        return 3.14159 * radio ** 2 * altura
         """
         Calcula el volumen de un cilindro.
         
@@ -270,6 +325,12 @@ class Geometria:
         pass
     
     def area_superficie_cilindro(self, radio, altura):
+        if radio < 0 or altura < 0:
+
+            return 0
+        
+        return 2 * 3.14159 * radio * (radio + altura)
+
         """
         Calcula el área de la superficie de un cilindro.
         
@@ -283,6 +344,7 @@ class Geometria:
         pass
     
     def distancia_entre_puntos(self, x1, y1, x2, y2):
+        return ((x1 - x2) ** 2 + (y1 - y2) ** 2) ** 0.5
         """
         Calcula la distancia euclidiana entre dos puntos en un plano 2D.
         
@@ -298,6 +360,7 @@ class Geometria:
         pass
     
     def punto_medio(self, x1, y1, x2, y2):
+        return ((x1 + x2) / 2, (y1 + y2) / 2)
         """
         Calcula el punto medio entre dos puntos en un plano 2D.
         
@@ -313,6 +376,9 @@ class Geometria:
         pass
     
     def pendiente_recta(self, x1, y1, x2, y2):
+        if x1 == x2:
+            raise ValueError("La pendiente es indefinida para líneas verticales.")
+        return (y2 - y1) / (x2 - x1)
         """
         Calcula la pendiente de una recta que pasa por dos puntos.
         
@@ -328,6 +394,9 @@ class Geometria:
         pass
     
     def ecuacion_recta(self, x1, y1, x2, y2):
+        m = (y2 - y1) / (x2 - x1)
+        c = y1 - m * x1
+        return m, c 
         """
         Obtiene los coeficientes de la ecuación de una recta en la forma Ax + By + C = 0.
         
@@ -343,6 +412,11 @@ class Geometria:
         pass
     
     def area_poligono_regular(self, num_lados, lado, apotema):
+        if num_lados < 3 or lado < 0 or apotema < 0:
+
+            return 0
+        
+        return (num_lados * lado * apotema) / (2 * math.tan(math.pi / num_lados))
         """
         Calcula el área de un polígono regular.
         
@@ -357,6 +431,11 @@ class Geometria:
         pass
     
     def perimetro_poligono_regular(self, num_lados, lado):
+        if num_lados < 3 or lado < 0:
+
+            return 0
+        
+        return num_lados * lado
         """
         Calcula el perímetro de un polígono regular.
         

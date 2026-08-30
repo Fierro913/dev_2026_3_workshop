@@ -1,5 +1,6 @@
 class Stats:
     def promedio(self, numeros):
+        
         """
         Calcula la media aritmética de una lista de números.
         
