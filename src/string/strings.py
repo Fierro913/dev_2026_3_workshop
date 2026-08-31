@@ -93,6 +93,7 @@ class Strings:
         pass
     
     def palabras_mayus(self, texto):
+        return texto.title()
         """
         Pon en Mayuscula la primera letra de cada palabra en una cadena.
         
@@ -105,6 +106,9 @@ class Strings:
         pass
     
     def eliminar_espacios_duplicados(self, texto):
+        while "  " in texto:
+            texto = texto.replace("  ", " ")
+        return texto
         """
         Elimina espacios duplicados en una cadena.
         
@@ -117,6 +121,11 @@ class Strings:
         pass
     
     def es_numero_entero(self, texto):
+        try:
+            int(texto)
+            return True
+        except ValueError:
+            return False
         """
         Verifica si una cadena representa un número entero sin usar isdigit().
         
@@ -129,6 +138,17 @@ class Strings:
         pass
     
     def cifrar_cesar(self, texto, desplazamiento):
+        alfabeto_minus = "abcdefghijklmnopqrstuvwxyz"
+        alfabeto_mayus = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        cifrado = ""
+        for char in texto:
+            if char in alfabeto_minus:
+                cifrado += alfabeto_minus[(alfabeto_minus.index(char) + desplazamiento) % len(alfabeto_minus)]
+            elif char in alfabeto_mayus:
+                cifrado += alfabeto_mayus[(alfabeto_mayus.index(char) + desplazamiento) % len(alfabeto_mayus)]
+            else:
+                cifrado += char
+        return cifrado
         """
         Aplica el cifrado César a una cadena de texto.
         
@@ -142,6 +162,17 @@ class Strings:
         pass
     
     def descifrar_cesar(self, texto, desplazamiento):
+        alfabeto_minus = "abcdefghijklmnopqrstuvwxyz"
+        alfabeto_mayus = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        descifrado = ""
+        for char in texto:
+            if char in alfabeto_minus:
+                descifrado += alfabeto_minus[(alfabeto_minus.index(char) - desplazamiento) % len(alfabeto_minus)]
+            elif char in alfabeto_mayus:
+                descifrado += alfabeto_mayus[(alfabeto_mayus.index(char) - desplazamiento) % len(alfabeto_mayus)]
+            else:
+                descifrado += char
+        return descifrado
         """
         Descifra una cadena cifrada con el método César.
         
@@ -155,6 +186,9 @@ class Strings:
         pass
     
     def encontrar_subcadena(self, texto, subcadena):
+        if not subcadena:
+            return []
+        return [i for i in range(len(texto) - len(subcadena) + 1) if texto[i:i+len(subcadena)] == subcadena]
         """
         Encuentra todas las posiciones de una subcadena en un texto sin usar find() o index().
         
