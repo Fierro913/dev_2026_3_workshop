@@ -89,6 +89,7 @@ class Matrix:
         pass
 
     def transpuesta(self, matriz):
+        return [[matriz[j][i] for j in range(len(matriz))] for i in range(len(matriz[0]))]
         """
         Calcula la transpuesta de una matriz (intercambia filas por columnas).
 
@@ -104,6 +105,7 @@ class Matrix:
         pass
 
     def es_cuadrada(self, matriz):
+        return len(matriz) == len(matriz[0])
         """
         Verifica si una matriz es cuadrada (mismo número de filas y columnas).
 
@@ -120,6 +122,7 @@ class Matrix:
         pass
 
     def es_simetrica(self, matriz):
+        return self.es_cuadrada(matriz) and matriz == self.transpuesta(matriz)
         """
         Verifica si una matriz es simétrica (igual a su transpuesta).
         Solo aplica a matrices cuadradas.
@@ -137,6 +140,9 @@ class Matrix:
         pass
 
     def traza(self, matriz):
+        if not self.es_cuadrada(matriz):
+            raise ValueError("La matriz debe ser cuadrada para calcular la traza.")
+        return sum(matriz[i][i] for i in range(len(matriz)))
         """
         Calcula la traza de una matriz cuadrada (suma de los elementos de la diagonal principal).
 
@@ -156,6 +162,9 @@ class Matrix:
         pass
 
     def determinante_2x2(self, matriz):
+        if len(matriz) != 2 or len(matriz[0]) != 2:
+            raise ValueError("La matriz debe ser 2x2 para calcular el determinante.")
+        return matriz[0][0] * matriz[1][1] - matriz[0][1] * matriz[1][0]
         """
         Calcula el determinante de una matriz 2x2.
         det([[a, b], [c, d]]) = a*d - b*c
@@ -176,6 +185,14 @@ class Matrix:
         pass
 
     def determinante_3x3(self, matriz):
+        if len(matriz) != 3 or len(matriz[0]) != 3:
+            raise ValueError("La matriz debe ser 3x3 para calcular el determinante.")
+        return (matriz[0][0] * matriz[1][1] * matriz[2][2] +
+                matriz[0][1] * matriz[1][2] * matriz[2][0] +
+                matriz[0][2] * matriz[1][0] * matriz[2][1] -
+                matriz[0][2] * matriz[1][1] * matriz[2][0] -
+                matriz[0][1] * matriz[1][0] * matriz[2][2] -
+                matriz[0][0] * matriz[1][2] * matriz[2][1])
         """
         Calcula el determinante de una matriz 3x3 usando la regla de Sarrus.
 
@@ -195,6 +212,7 @@ class Matrix:
         pass
 
     def identidad(self, n):
+        return [[1 if i == j else 0 for j in range(n)] for i in range(n)]
         """
         Genera una matriz identidad de tamaño n x n.
         La diagonal principal tiene 1s y el resto 0s.
@@ -212,6 +230,9 @@ class Matrix:
         pass
 
     def diagonal(self, matriz):
+        if not self.es_cuadrada(matriz):
+            raise ValueError("La matriz debe ser cuadrada para extraer la diagonal.")
+        return [matriz[i][i] for i in range(len(matriz))]
         """
         Extrae los elementos de la diagonal principal de una matriz cuadrada.
 
