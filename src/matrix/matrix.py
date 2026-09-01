@@ -49,6 +49,9 @@ class Matrix:
         pass
 
     def multiplicar_matrices(self, A, B):
+        if not A or not B or len(A[0]) != len(B):
+            raise ValueError("Las matrices deben tener las mismas dimensiones para multiplicarse.")
+        return [[sum(A[i][k] * B[k][j] for k in range(len(A[0]))) for j in range(len(B[0]))] for i in range(len(A))]
         """
         Multiplica dos matrices usando la multiplicación matricial estándar.
         El número de columnas de A debe ser igual al número de filas de B.
@@ -69,6 +72,7 @@ class Matrix:
         pass
 
     def multiplicar_escalar(self, matriz, escalar):
+        return [[elemento * escalar for elemento in fila] for fila in matriz]
         """
         Multiplica cada elemento de la matriz por un escalar.
 
