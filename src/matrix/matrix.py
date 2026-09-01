@@ -27,6 +27,9 @@ class Matrix:
         pass
 
     def resta_matrices(self, A, B):
+        if not A or not B or len(A) != len(B) or len(A[0]) != len(B[0]):
+            raise ValueError("Las matrices deben tener las mismas dimensiones para restarse.")
+        return [[A[i][j] - B[i][j] for j in range(len(A[0]))] for i in range(len(A))]
         """
         Resta dos matrices elemento a elemento (A - B).
 
